@@ -58,7 +58,7 @@ def slurm_submit(task, config, dconfig, narray=1, dep=None):
     else:
         cmd = f"sbatch job_{task}.sh"
 
-    res = subprocess.run(cmd, shell=True, capture_output=True)
+    res = subprocess.run(cmd, shell=True, capture_output=True, check=True)
     job_id = str(res.stdout).split("batch job ")[1].split("\\")[0]
     return job_id
 
